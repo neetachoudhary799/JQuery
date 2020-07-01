@@ -1,0 +1,141 @@
+<div  style="display:none" class="product-page-popup fade custom-ousidepopup" id="productpopup" role="dialog">
+      <div class="custom_popuplayout">
+        <div class="popup-dialog">
+          <!-- Modal content-->
+          <div class="popup-content">
+            <div class="popup-header">
+              <button type="button" class="productpopup_close">×</button>
+				<h4 class="productpopup-title"></h4>
+            </div>
+            <div class="productpopup-body"><div class="new-info"></div>
+              <div class="custom_product_data">YOU MUST AGREE WITH THE TERMS AND CONDITIONS OF SALES TO CHECK OUT.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<style>
+div#productpopup {
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    z-index: 9999;
+    left: 0px;
+    right: 0px;
+    background: #25282b94;
+    width: 100%;
+}
+.custom_popuplayout {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+.popup-dialog {
+    width: 40%;
+    display: inline-block;
+    background: #fff;
+    z-index: 99999;
+    box-shadow: 0px 0px 10px 5px #25282ba3;
+}
+.popup-content {
+    padding: 30px;
+}
+.product-page-popup .popup-header {
+    width: 100%;
+    float: left;
+}
+.productpopup-body {
+    text-align: justify;
+    margin-top: 70px;
+}
+div#productpopup {
+    opacity: 0;
+}
+.custom_product_data {
+    font-size: 29px;
+    font-weight: 600;
+    text-align: center;
+}
+</style>
+<script>
+  jQuery(document).ready(function(){
+var userEmail=getCookie("cart_page_cookie");
+    if(userEmail){
+    }
+else
+{
+    setTimeout(function(){
+popupshow();
+popupopacity();
+    },3000);
+}
+});
+  
+jQuery('.custom_swatch_images span').click(function(){
+$("#productpopup").addClass('custom_variant_image');
+popupshow();
+popupopacity();
+});
+
+
+$("body").delegate( "button.productpopup_close_button", "click", function() {
+popuphide();
+  });
+
+$('button.productpopup_close').on('click',function(){
+popuphide();
+setCookie("cart_page_cookie","store",1);
+  });
+
+$(".product-page-popup").on('click',function(e){
+if(!$(e.target).closest('.popup-dialog, .product-icons').length){
+if($('.product-page-popup').hasClass('custom-ousidepopup')){
+popuphide();
+setCookie("cart_page_cookie","store",1);
+}
+}
+});
+
+
+function popupopacity(){
+$('div#productpopup').css('opacity','1');
+}
+
+function popupshow(){
+$('.product-page-popup').addClass('custom-ousidepopup');
+$('div#productpopup').show();
+  
+}
+function popuphide(){
+$('.product-page-popup').removeClass('custom-ousidepopup');
+$('div#productpopup').css('opacity','0');
+$('div#productpopup').fadeOut();
+$("#productpopup").removeClass('custom_variant_image');
+}
+
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+ //set "user_email" cookie, expires in 30 days
+
+</script>
