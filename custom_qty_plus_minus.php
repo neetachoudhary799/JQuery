@@ -24,10 +24,10 @@
 counter();
 <script>
 <div class="custom_input-style">
-					<label>Quantity</label>
-					<input type="text" name="quantity" class="form-control input-sm txt-quantity required" value="1">
-					<div class="counter">
-						<span class="plus">+</span>
-						<span class="minus">-</span>
-					</div>
-				</div>
+<label>Quantity</label>
+<input type="number" name="quantity" class="form-control input-sm txt-quantity required" value="1">
+<div class="counter">
+<span class="plus">+</span>
+<span class="minus">-</span>
+</div>
+</div>
