@@ -8,4 +8,15 @@
     background: #FFF;
 }
 </style>
-
+<script>
+$(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+var checking= jQuery('header.header.header--inline').height();    
+        if(scroll > checking){
+          $('div#shopify-section-header nav.nav-bar').addClass('custom_header_sticky');
+        }
+        else if(scroll< checking){
+          $('div#shopify-section-header nav.nav-bar').removeClass('custom_header_sticky');
+        }
+      });
+</script>
